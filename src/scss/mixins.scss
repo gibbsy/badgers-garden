@@ -1,0 +1,89 @@
+$appLightGrey: #e4e4e4;
+$appGrey: #44575a;
+$appDarkGrey: #002b36;
+$borderWidth: 6px;
+
+@mixin abs100() {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin abs() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin bp($point) {
+  
+  $bp-768: "(min-width: 768px)";
+  $bp-1024: "(min-width: 1024px)";
+  $bp-1280: "(min-width: 1280px)";
+  $bp-mobile: "(max-width: 479px)";
+  $bp-mobLandscape: "(min-width: 320px) and (max-width: 812px) and (orientation: landscape)";
+  $bp-landscape: "(orientation: landscape)";
+  $bp-tablet: "(min-width: 768px) and (max-width: 1024px)";
+  $bp-tabLandscape: "(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)";
+  $bp-lrgLap: "(min-width: 1440px)";
+  $bp-hd: "(min-width: 1920px)";
+
+  @if $point == hd {
+    @media only screen and #{$bp-hd} { @content; }
+  }
+  @if $point == lrgLap {
+    @media only screen and #{$bp-lrgLap} { @content; }
+  }
+  @else if $point == 768 {
+    @media only screen and #{$bp-768} { @content; }
+  }
+  @else if $point == 1024 {
+    @media only screen and #{$bp-1024} { @content; }
+  }
+  @else if $point == 1280 {
+    @media only screen and #{$bp-1280} { @content; }
+  }
+  @else if $point == tablet {
+    @media only screen and #{$bp-tablet}  { @content; }
+  }
+  @else if $point == mobLandscape {
+    @media only screen and #{$bp-mobLandscape}  { @content; }
+  }
+  @else if $point == tabLandscape {
+    @media only screen and #{$bp-tabLandscape}  { @content; }
+  }
+  @else if $point == landscape {
+    @media only screen and #{$bp-landscape}  { @content; }
+  }
+  @else if $point == mobile {
+    @media only screen and #{$bp-mobile}  { @content; }
+  }
+
+}
