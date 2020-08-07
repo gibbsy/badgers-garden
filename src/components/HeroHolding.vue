@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="hero__image-container">
-      <img src="../assets/hero_1.jpg" alt="" />
+      <!-- <img src="../assets/hero_1.jpg" alt="" /> -->
     </div>
   </div>
 </template>

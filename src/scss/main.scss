@@ -1,15 +1,14 @@
-body, html {
-  width: 100%;
-  height: 100vh;
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
   overflow: hidden;
   @include bp(1280) {
-   height: 100%;
+    height: 100%;
   }
   @include bp(lrgLap) {
     font-size: 15px;
@@ -18,43 +17,55 @@ body, html {
     font-size: 17px;
   }
 }
+* {
+  box-sizing: border-box;
+}
+h1 {
+  font-family: "xetbookbold";
+  font-weight: normal;
+}
 #app {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: block;
+  position: relative;
   margin: 0;
   padding: 0;
-  color: $appLightGrey;
+  color: #6f7d13;
   line-height: 1.4;
-  overflow: hidden;
-  background-color: #F6F4EF;
-  transition: background-color 2s ease;
-  .init {
-    @include abs100();
+  background-color: #f6f4ef;
+  .logo__container {
+    position: absolute;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    h1 {
-      color: $appGrey;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    justify-content: flex-start;
+    z-index: 10;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    @include bp(1024) {
+      padding-top: 2rem;
+      padding-left: 0;
+      justify-content: center;
+    }
+    .logo {
+      position: relative;
+      width: 25%;
+      height: 25%;
+      @include bp(1280) {
+        width: 180px;
+        height: 180px;
+      }
+      img {
+        max-width: 100%;
+      }
     }
   }
-  a {
-    color: $appLightGrey;
+}
+/*   a {
   }
   a:hover {
-    color: #fff;
-  }
-  @include bp(768) {
-    line-height: 1.4;
-  }
-  &.loading {
-    background-color: $appDarkGrey;
-  }
-  li {
-    list-style: none;
-  }
+  } */
+@include bp(768) {
+  line-height: 1.4;
+}
+li {
+  list-style: none;
 }

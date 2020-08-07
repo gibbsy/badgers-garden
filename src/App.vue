@@ -2,7 +2,7 @@
   <div id="app">
     <div class="logo__container">
       <div class="logo">
-        <img alt="Badgers Garden" src="./assets/logo.png" />
+        <img alt="Badgers Garden" src="./assets/logo@2x.png" />
       </div>
     </div>
     <hero-holding />
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~@/scss/main.scss";
 #app {
-  @import "~@/scss/main.scss";
 }
 </style>
