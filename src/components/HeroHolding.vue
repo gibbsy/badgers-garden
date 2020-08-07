@@ -17,7 +17,7 @@
             <span style="font-weight: bold;">10 plugs £5</span>
           </li>
         </ul>
-        <h2>For more information or to order contact us:</h2>
+        <h2>For more information or to order contact:</h2>
         <ul class="hero__contact-details">
           <li>
             <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
@@ -26,7 +26,9 @@
             <a href="tel:+447973489993">Call 07973 489993</a>
           </li>
           <li>
-            <a href="badgerbolts@gmail.com">follow @thebadgersgarden</a>
+            <a href="https://www.instagram.com/thebadgersgarden/"
+              >follow @thebadgersgarden for updates</a
+            >
           </li>
         </ul>
       </div>

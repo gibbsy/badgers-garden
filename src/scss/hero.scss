@@ -14,23 +14,24 @@
 .hero__copy-container {
   width: 100%;
   height: 60%;
-  padding: 3rem;
+  padding: 3.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  // padding: 0 10%;
   @include bp(768) {
+    align-items: center;
     width: 50%;
     height: 100vh;
     padding: 0 10%;
   }
   .hero__contact-details {
-    li {
-      margin-top: 1.1rem;
-      &:first-child {
-        margin-top: 0;
+    @include bp(768) {
+      li {
+        margin-top: 1.1rem;
+        &:first-child {
+          margin-top: 0;
+        }
+        font-size: 1.3rem;
       }
-      font-size: 1.3rem;
     }
   }
 }
@@ -45,7 +46,7 @@
     height: 100%;
     background: #fff url("~@/assets/hero_1@2x.jpg") no-repeat center;
     background-size: cover;
-    animation: fade-in-zoom-out 2s forwards ease-out;
+    animation: fade-in-zoom-out 3s forwards ease-out;
   }
   @include bp(768) {
     width: 50%;
