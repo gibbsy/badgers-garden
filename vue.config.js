@@ -10,8 +10,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "@/scss/mixins.scss";
-        @import "@/scss/_typo.scss";`,
+        prependData: `@import "@/scss/mixins.scss";`,
       },
     },
   },

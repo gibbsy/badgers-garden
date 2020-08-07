@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <hero-holding/>
+    <div class="logo__container">
+      <div class="logo">
+        <img alt="Badgers Garden" src="./assets/logo.png" />
+      </div>
+    </div>
+    <hero-holding />
   </div>
 </template>
 
 <script>
-import HeroHolding from './components/HeroHolding.vue'
+import HeroHolding from "./components/HeroHolding.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HeroHolding
   }
-}
+};
 </script>
 
 <style lang="scss">
