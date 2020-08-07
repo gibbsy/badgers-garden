@@ -6,7 +6,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  overflow: hidden;
   @include bp(1024) {
     font-size: 16px;
   }
@@ -28,9 +27,13 @@ h1 {
   margin-bottom: 1rem;
   @include bp(768) {
     margin-bottom: 2rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   @include bp(1280) {
+    margin-bottom: 2.2rem;
+    font-size: 3rem;
+  }
+  @include bp(hd) {
     margin-bottom: 2.5rem;
     font-size: 3.5rem;
   }

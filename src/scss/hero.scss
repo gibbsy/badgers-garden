@@ -6,6 +6,9 @@
   padding: 0;
   display: flex;
   flex-direction: column-reverse;
+  @include bp(mobLandscape) {
+    height: 200vh;
+  }
   @include bp(768) {
     flex-direction: row;
   }
@@ -20,11 +23,11 @@
   @include bp(768) {
     align-items: center;
     width: 50%;
-    height: 100vh;
+    height: 100%;
     padding: 0 10%;
   }
   .hero__contact-details {
-    @include bp(768) {
+    @include bp(1280) {
       li {
         margin-top: 1.1rem;
         &:first-child {
@@ -50,6 +53,6 @@
   }
   @include bp(768) {
     width: 50%;
-    height: 100vh;
+    height: 100%;
   }
 }

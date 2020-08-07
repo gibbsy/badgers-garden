@@ -6,15 +6,15 @@
         <ul class="hero__product-list">
           <li>
             Mixed tasty salad leaves -
-            <span style="font-weight: bold;">150g £2.5</span>
+            <span style="font-weight: bold;">£2.5 / 150g</span>
           </li>
           <li>
             Loads of varieties of tomatoes -
-            <span style="font-weight: bold;">500g bag £2.5</span>
+            <span style="font-weight: bold;">£2.5 / 500g</span>
           </li>
           <li>
             Salad plug plants (mixed) -
-            <span style="font-weight: bold;">10 plugs £5</span>
+            <span style="font-weight: bold;">£5 / 10 plugs</span>
           </li>
         </ul>
         <h2>For more information or to order contact:</h2>
