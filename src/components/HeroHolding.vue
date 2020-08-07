@@ -23,6 +23,7 @@
       </div>
     </div>
     <div class="hero__image-container">
+      <div class="hero__image-inner"></div>
       <!-- <img src="../assets/hero_1.jpg" alt="" /> -->
     </div>
   </div>

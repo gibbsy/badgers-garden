@@ -5,16 +5,16 @@ html {
   font-family: "avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px;
+  font-size: 15px;
   overflow: hidden;
-  @include bp(1280) {
-    height: 100%;
+  @include bp(1024) {
+    font-size: 16px;
   }
   @include bp(lrgLap) {
-    font-size: 15px;
+    font-size: 17px;
   }
   @include bp(hd) {
-    font-size: 17px;
+    font-size: 20px;
   }
 }
 * {
@@ -30,7 +30,8 @@ h1 {
   margin: 0;
   padding: 0;
   color: #6f7d13;
-  line-height: 1.4;
+  color: #5a6627;
+  line-height: 1.2;
   background-color: #f6f4ef;
   .logo__container {
     position: absolute;
@@ -48,7 +49,9 @@ h1 {
     .logo {
       position: relative;
       width: 25%;
-      height: 25%;
+      max-width: 180px;
+      // height: 25%;
+
       @include bp(1280) {
         width: 180px;
         height: 180px;
@@ -68,4 +71,7 @@ h1 {
 }
 li {
   list-style: none;
+}
+a {
+  color: #5a6627;
 }
