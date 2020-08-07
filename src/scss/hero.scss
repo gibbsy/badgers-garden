@@ -6,27 +6,38 @@
   padding: 0;
   display: flex;
   flex-direction: column-reverse;
-  @include bp(1024) {
+  @include bp(768) {
     flex-direction: row;
   }
 }
 
 .hero__copy-container {
   width: 100%;
-  height: 50%;
+  height: 60%;
   padding: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  @include bp(1024) {
+  // padding: 0 10%;
+  @include bp(768) {
     width: 50%;
     height: 100vh;
+    padding: 0 10%;
+  }
+  .hero__contact-details {
+    li {
+      margin-top: 1.1rem;
+      &:first-child {
+        margin-top: 0;
+      }
+      font-size: 1.3rem;
+    }
   }
 }
 
 .hero__image-container {
   width: 100%;
-  height: 50%;
+  height: 40%;
   overflow: hidden;
   .hero__image-inner {
     transform-origin: center;
@@ -36,7 +47,7 @@
     background-size: cover;
     animation: fade-in-zoom-out 2s forwards ease-out;
   }
-  @include bp(1024) {
+  @include bp(768) {
     width: 50%;
     height: 100vh;
   }

@@ -20,9 +20,34 @@ html {
 * {
   box-sizing: border-box;
 }
+/* Global type styles */
 h1 {
   font-family: "xetbookbold";
   font-weight: normal;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  @include bp(768) {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+  }
+  @include bp(1280) {
+    margin-bottom: 2.5rem;
+    font-size: 3.5rem;
+  }
+}
+h2 {
+  margin: 2rem 0 1rem 0;
+}
+li {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #5a6627;
 }
 #app {
   width: 100%;
@@ -31,7 +56,7 @@ h1 {
   padding: 0;
   color: #6f7d13;
   color: #5a6627;
-  line-height: 1.2;
+  line-height: 1.1;
   background-color: #f6f4ef;
   .logo__container {
     position: absolute;
@@ -41,7 +66,7 @@ h1 {
     z-index: 10;
     padding-top: 1.5rem;
     padding-left: 1.5rem;
-    @include bp(1024) {
+    @include bp(768) {
       padding-top: 2rem;
       padding-left: 0;
       justify-content: center;
@@ -49,10 +74,11 @@ h1 {
     .logo {
       position: relative;
       width: 25%;
-      max-width: 180px;
+      max-width: 140px;
       // height: 25%;
 
       @include bp(1280) {
+        max-width: 180px;
         width: 180px;
         height: 180px;
       }
@@ -61,17 +87,4 @@ h1 {
       }
     }
   }
-}
-/*   a {
-  }
-  a:hover {
-  } */
-@include bp(768) {
-  line-height: 1.4;
-}
-li {
-  list-style: none;
-}
-a {
-  color: #5a6627;
 }

@@ -4,11 +4,20 @@
       <div class="hero__copy">
         <h1>Fresh locally grown salad delivered to your door.</h1>
         <ul class="hero__product-list">
-          <li>Mixed tasty salad leaves - 150g £2.5</li>
-          <li>Loads of varieties of tomatoes 500g bag £2.5</li>
-          <li>Salad plug plants (mixed) 10 plugs £5</li>
+          <li>
+            Mixed tasty salad leaves -
+            <span style="font-weight: bold;">150g £2.5</span>
+          </li>
+          <li>
+            Loads of varieties of tomatoes -
+            <span style="font-weight: bold;">500g bag £2.5</span>
+          </li>
+          <li>
+            Salad plug plants (mixed) -
+            <span style="font-weight: bold;">10 plugs £5</span>
+          </li>
         </ul>
-        <h2>For more information or to order email</h2>
+        <h2>For more information or to order contact us:</h2>
         <ul class="hero__contact-details">
           <li>
             <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
