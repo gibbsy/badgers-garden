@@ -10,8 +10,9 @@
 </template>
 
 <script>
-// import loader from "./scripts/loader";
+import loader from "./scripts/Preloader.js";
 import manifest from "./scripts/manifest.js";
+import bus from "./scripts/bus";
 import Loading from "./components/Loading.vue";
 import PageLayout from "./components/PageLayout.vue";
 
@@ -28,14 +29,12 @@ export default {
     };
   },
   mounted() {
-    loader.onComplete.add(() => {
-      this.assets = loader.resources;
-      this.$nextTick(() => {
-        this.loading = false;
-        console.log(loader.resources);
-      });
+    //  CUSTOM PRELOADER
+    bus.$on("LOAD_COMPLETE", () => {
+      this.loading = false;
+      console.log("LOADING COMPLETE");
     });
-    loader.add(manifest).load();
+    loader.init(manifest, true);
   }
 };
 </script>

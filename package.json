@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "resource-loader": "^4.0.0-rc4",
     "vue": "^2.6.11"
   },
   "devDependencies": {

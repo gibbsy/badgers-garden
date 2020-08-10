@@ -34,28 +34,45 @@
       </div>
     </div>
     <div class="hero__image-container">
-      <div class="hero__image-inner" :class="{ ready: ready }"></div>
+      <!-- <div class="hero__image-inner" :class="{ ready: ready }"></div> -->
+      <slideshow :slides="slides" />
     </div>
   </div>
 </template>
 
 <script>
-import loader from "../scripts/loader";
+import loader from "../scripts/Preloader";
+import Slideshow from "./Slideshow";
 export default {
   props: ["assets"],
+  components: {
+    Slideshow
+  },
   data() {
     return {
-      ready: false
+      ready: false,
+      slides: []
     };
   },
   methods: {
     scaleImage() {}
   },
   mounted() {
-    console.log(loader.resources);
-    const imgCont = document.querySelector(".hero__image-inner");
+    // console.log(loader.resources["hero_1"].img.src);
+    // let slides = loader.resources.filter(el => el[id].includes("hero"));
+    //console.log(slides);
+    /*const imgCont = document.querySelector(".hero__image-inner");
     console.log(loader.resources["hero_1"].url);
-    imgCont.style.backgroundImage = loader.resources["hero_1"].data;
+    imgCont.style.backgroundImage = `url(${loader.resources["hero_1"].img.src})`;
+    this.ready = true; */
+    let resources = loader.resources;
+    for (let key in resources) {
+      let res = resources[key];
+      if (res["id"].includes("hero")) {
+        this.slides.push(res);
+      }
+    }
+    console.log(this.slides);
     this.ready = true;
   }
 };

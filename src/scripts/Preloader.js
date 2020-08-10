@@ -1,34 +1,49 @@
 import bus from "./bus";
 
-export default class Preload {
+class Preloader {
   constructor(manifest) {
-    this.manifest = manifest;
-    this.assets = {};
+    this.manifest = [];
+    this.resources = {};
     this.loaded = 0;
-    this.queue = manifest.length;
+    this.index = 0;
+    this.queue = 0;
   }
-  load() {
+  init(manifest, autostart) {
+    this.manifest = manifest;
+    this.queue = manifest.length;
     this.manifest.forEach(el => {
-      let img = new Image();
-      let data = {
-        id: el.id,
-        src: el.url,
-        img
-      };
-      img.onload(data => {
-        this.assets[data.id] = data;
-        this.checkProgress();
-      }).src = "el.url";
+      el.img = new Image();
+      el.loaded = false;
     });
+    if (autostart == true) {
+      this.loadImage();
+    }
+  }
+  loadImage() {
+    const { manifest, index } = this;
+    let asset = manifest[index];
+    console.log("loading " + asset.id);
+    console.log(asset);
+    asset.img.onload = evt => {
+      asset.loaded = true;
+      this.resources[asset.id] = asset;
+      this.checkProgress();
+    };
+    asset.img.src = asset.url;
   }
   checkProgress() {
     ++this.loaded;
-    console.log("Loaded " + this.loaded + ". Queue is" + this.queue);
+    console.log("Loaded " + this.loaded + ". Queue is " + this.queue);
     if (this.loaded === this.queue) {
       this.onComplete();
+    } else {
+      this.loadImage(++this.index);
     }
   }
   onComplete() {
-    bus.emit("LOAD_COMPLETE");
+    console.log(this.resources);
+    bus.$emit("LOAD_COMPLETE");
   }
 }
+
+export default new Preloader();
