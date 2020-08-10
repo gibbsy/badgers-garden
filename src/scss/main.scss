@@ -6,6 +6,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
+  background-color: #f6f4ef;
   @include bp(1024) {
     font-size: 16px;
   }
@@ -69,7 +70,7 @@ a {
   color: #6f7d13;
   color: #5a6627;
   line-height: 1.1;
-  background-color: #f6f4ef;
+
   .logo__container {
     position: absolute;
     width: 100%;
@@ -97,6 +98,16 @@ a {
       img {
         max-width: 100%;
       }
+    }
+  }
+  .loading__container {
+    @include abs100();
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      animation: blink 1s infinite ease-in-out;
     }
   }
 }

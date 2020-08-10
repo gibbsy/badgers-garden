@@ -47,9 +47,22 @@
     transform-origin: center;
     width: 100%;
     height: 100%;
-    background: #fff url("~@/assets/hero_1@2x.jpg") no-repeat center;
+    //background: #fff url("~@/assets/hero_1@2x.jpg") no-repeat center;
+    //background: #fff url("/static/images/hero_1@2x.jpg") no-repeat center;
+    background-repeat: no-repeat;
     background-size: cover;
-    animation: fade-in-zoom-out 3s forwards ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //opacity: 0;
+    &.ready {
+      animation: fade-in-zoom-out 3s forwards ease-out;
+    }
+    img {
+      max-width: 100%;
+      min-height: 100%;
+      max-height: 100%;
+    }
   }
   @include bp(768) {
     width: 50%;

@@ -34,16 +34,29 @@
       </div>
     </div>
     <div class="hero__image-container">
-      <div class="hero__image-inner"></div>
-      <!-- <img src="../assets/hero_1.jpg" alt="" /> -->
+      <div class="hero__image-inner" :class="{ ready: ready }"></div>
     </div>
   </div>
 </template>
 
 <script>
+import loader from "../scripts/loader";
 export default {
+  props: ["assets"],
   data() {
-    return {};
+    return {
+      ready: false
+    };
+  },
+  methods: {
+    scaleImage() {}
+  },
+  mounted() {
+    console.log(loader.resources);
+    const imgCont = document.querySelector(".hero__image-inner");
+    console.log(loader.resources["hero_1"].url);
+    imgCont.style.backgroundImage = loader.resources["hero_1"].data;
+    this.ready = true;
   }
 };
 </script>

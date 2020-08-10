@@ -1,27 +1,45 @@
 <template>
   <div id="app">
-    <div class="logo__container">
-      <div class="logo">
-        <img alt="Badgers Garden" src="./assets/logo@2x.png" />
-      </div>
-    </div>
-    <hero-holding />
+    <transition name="quick-fade" mode="out-in" appear>
+      <loading v-if="loading" />
+    </transition>
+    <transition name="quick-fade" mode="out-in" appear>
+      <page-layout v-if="!loading" />
+    </transition>
   </div>
 </template>
 
 <script>
-import HeroHolding from "./components/HeroHolding.vue";
+// import loader from "./scripts/loader";
+import manifest from "./scripts/manifest.js";
+import Loading from "./components/Loading.vue";
+import PageLayout from "./components/PageLayout.vue";
 
 export default {
   name: "App",
   components: {
-    HeroHolding
+    Loading,
+    PageLayout
+  },
+  data() {
+    return {
+      loading: "true",
+      assets: {}
+    };
+  },
+  mounted() {
+    loader.onComplete.add(() => {
+      this.assets = loader.resources;
+      this.$nextTick(() => {
+        this.loading = false;
+        console.log(loader.resources);
+      });
+    });
+    loader.add(manifest).load();
   }
 };
 </script>
 
 <style lang="scss">
 @import "~@/scss/main.scss";
-#app {
-}
 </style>
