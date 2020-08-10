@@ -28,7 +28,7 @@ export default {
   mounted() {
     setInterval(() => {
       ++this.index;
-    }, 7000);
+    }, 8000);
   }
 };
 </script>
