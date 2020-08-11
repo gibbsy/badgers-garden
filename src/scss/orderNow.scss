@@ -1,0 +1,25 @@
+.order__container-outer {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .order__info {
+    position: relative;
+    background-color: rgba(#2f3514, 0.9);
+    color: #fff;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3rem;
+    ul {
+      margin-top: 2rem;
+    }
+    a {
+      color: #fff;
+    }
+  }
+}

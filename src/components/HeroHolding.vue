@@ -18,7 +18,7 @@
           </li>
         </ul>
         <h2>For more information or to order contact:</h2>
-        <ul class="hero__contact-details">
+        <ul class="hero__contact-details contact-details">
           <li>
             <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
           </li>
@@ -44,7 +44,7 @@
 import loader from "../scripts/Preloader";
 import Slideshow from "./Slideshow";
 export default {
-  props: ["assets"],
+  props: ["resources"],
   components: {
     Slideshow
   },
@@ -65,9 +65,8 @@ export default {
     console.log(loader.resources["hero_1"].url);
     imgCont.style.backgroundImage = `url(${loader.resources["hero_1"].img.src})`;
     this.ready = true; */
-    let resources = loader.resources;
-    for (let key in resources) {
-      let res = resources[key];
+    for (let key in this.resources) {
+      let res = this.resources[key];
       if (res["id"].includes("hero")) {
         this.slides.push(res);
       }

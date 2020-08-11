@@ -42,6 +42,13 @@ $borderWidth: 6px;
   }
 }
 
+@mixin transition-delay($children, $delay, $stagger) {
+  @for $i from 1 through $children {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$delay + $i * $stagger}s;
+    }
+  }
+}
 @mixin bp($point) {
   $bp-768: "(min-width: 768px)";
   $bp-1024: "(min-width: 1024px)";

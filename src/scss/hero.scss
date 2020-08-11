@@ -26,15 +26,16 @@
     height: 100%;
     padding: 0 10%;
   }
-  .hero__contact-details {
-    @include bp(1280) {
-      li {
-        margin-top: 1.1rem;
-        &:first-child {
-          margin-top: 0;
-        }
-        font-size: 1.3rem;
+}
+.hero__contact-details,
+.contact-details {
+  @include bp(1280) {
+    li {
+      margin-top: 1.1rem;
+      &:first-child {
+        margin-top: 0;
       }
+      font-size: 1.3rem;
     }
   }
 }

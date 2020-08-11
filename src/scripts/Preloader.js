@@ -22,8 +22,8 @@ class Preloader {
   loadImage() {
     const { manifest, index } = this;
     let asset = manifest[index];
-    console.log("loading " + asset.id);
-    console.log(asset);
+    // console.log("loading " + asset.id);
+    // console.log(asset);
     asset.img.onload = evt => {
       asset.loaded = true;
       this.resources[asset.id] = asset;
@@ -33,7 +33,7 @@ class Preloader {
   }
   checkProgress() {
     ++this.loaded;
-    console.log("Loaded " + this.loaded + ". Queue is " + this.queue);
+    // console.log("Loaded " + this.loaded + ". Queue is " + this.queue);
     if (this.loaded === this.queue) {
       this.onComplete();
     } else {
@@ -41,7 +41,7 @@ class Preloader {
     }
   }
   onComplete() {
-    console.log(this.resources);
+    // console.log(this.resources);
     bus.$emit("LOAD_COMPLETE");
   }
 }

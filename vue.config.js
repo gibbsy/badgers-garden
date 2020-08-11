@@ -1,7 +1,9 @@
 module.exports = {
   publicPath: "./",
   configureWebpack: {
-    externals: {}
+    externals: {
+      ScrollMagic: "ScrollMagic"
+    }
   },
   productionSourceMap: false,
   devServer: {
