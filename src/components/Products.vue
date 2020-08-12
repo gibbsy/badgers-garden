@@ -1,5 +1,5 @@
 <template>
-  <div class="products__container-outer fade-in" :class="{ active: section1 }">
+  <div id="products" class="products__container-outer fade-in">
     <h1 class="cutouts">Bang in season!</h1>
     <div
       class="product"
@@ -47,21 +47,15 @@ const urlBuilder = imageUrlBuilder(sanity);
 export default {
   props: ["scroller", "productList"],
   data() {
-    return {
-      section1: false
-    };
+    return {};
   },
   methods: {
     initScrollActions() {
-      console.log(this.scroller);
-      let component = this;
       var scene1 = new ScrollMagic.Scene({
         triggerElement: ".products__container-outer",
         triggerHook: 0.7
       })
-        .on("start", function(e) {
-          component.section1 = true;
-        })
+        .setClassToggle(".products__container-outer", "active")
         .addTo(this.scroller);
 
       let productEls = document.querySelectorAll(".product");

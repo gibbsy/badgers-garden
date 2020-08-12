@@ -1,12 +1,13 @@
 body,
 html {
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  background-color: #f6f4ef;
+  background-color: $appBg;
   @include bp(1024) {
     font-size: 16px;
   }
@@ -24,22 +25,35 @@ html {
 h1 {
   font-family: "xetbookbold";
   font-weight: normal;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
-  &.cutouts {
-    font-family: "mixcutoutsmedium";
-  }
   @include bp(768) {
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   @include bp(1280) {
     margin-bottom: 2.2rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   @include bp(hd) {
     margin-bottom: 2.5rem;
-    font-size: 3.5rem;
+    font-size: 4rem;
+  }
+  &.cutouts {
+    font-family: "mixcutoutsmedium";
+    text-align: left;
+    @include bp(768) {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+    @include bp(1280) {
+      margin-bottom: 2.2rem;
+      font-size: 2.8rem;
+    }
+    @include bp(hd) {
+      margin-bottom: 2.5rem;
+      font-size: 3rem;
+    }
   }
 }
 h2 {
@@ -47,6 +61,10 @@ h2 {
   @include bp(768) {
     margin: 2rem 0 1rem 0;
   }
+}
+p {
+  line-height: 2;
+  font-size: 1.1rem;
 }
 ul {
   margin-top: 0.5rem;
@@ -63,15 +81,14 @@ ul {
   padding: 0;
 }
 a {
-  color: #5a6627;
+  color: $appMidGreen;
 }
 #app {
   width: 100%;
   position: relative;
   margin: 0;
   padding: 0;
-  color: #6f7d13;
-  color: #5a6627;
+  color: $appMidGreen;
   line-height: 1.1;
   display: flex;
   justify-content: center;
@@ -97,7 +114,7 @@ a {
       position: relative;
       width: 25%;
       max-width: 140px;
-      // height: 25%;
+      opacity: 1;
 
       @include bp(1280) {
         max-width: 180px;
@@ -115,8 +132,15 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    h2 {
+    flex-direction: column;
+    .loading__icon {
+      width: 5vw;
       animation: blink 1s infinite ease-in-out;
+      img {
+        max-width: 100%;
+      }
+    }
+    h2 {
     }
   }
   .fade-in {
@@ -133,7 +157,7 @@ a {
     width: 100%;
     height: 5rem;
     padding: 0 5rem;
-    background: #1d200c;
+    background: $appDarkGreen;
     a {
       margin-left: auto;
     }

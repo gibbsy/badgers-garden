@@ -14,10 +14,10 @@
 </template>
 <script>
 export default {
-  props: ["slides"],
+  props: ["slides", "delayStart", "interval"],
   data() {
     return {
-      index: 0
+      index: -1
     };
   },
   computed: {
@@ -25,10 +25,23 @@ export default {
       return this.index % this.slides.length;
     }
   },
+  methods: {
+    start() {
+      let interval = this.interval || 8000;
+      this.index = 0;
+      setInterval(() => {
+        ++this.index;
+      }, interval);
+    }
+  },
   mounted() {
-    setInterval(() => {
-      ++this.index;
-    }, 8000);
+    let delay = this.delayStart || 500;
+    setTimeout(() => {
+      this.start();
+    }, delay);
   }
 };
 </script>
+<style lang="scss">
+@import "~@/scss/slideshow.scss";
+</style>

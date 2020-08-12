@@ -4,10 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h1 {
+  h1.cutouts {
     font-size: 2rem;
     margin: 5rem 0;
-    color: #b7cc5f;
+    color: $appLightGreen;
   }
   .product {
     position: relative;
@@ -18,6 +18,7 @@
     transition: all 0.6s ease-out;
     margin-top: 5rem;
     align-items: center;
+
     &:first-of-type {
       margin-top: 0;
     }
@@ -57,6 +58,9 @@
       &.pull-right {
         margin-left: 5rem;
       }
+      p {
+        line-height: 1.5;
+      }
     }
     .product__cta {
       display: flex;
@@ -71,15 +75,20 @@
         padding: 0;
         text-decoration: none;
       }
-      a::after {
-        content: "";
-        display: inline-block;
-        width: 1.5rem;
-        height: 100%;
-        margin-left: 0.5rem;
-        height: 1.2rem;
-        background: url("~@/assets/images/cta_arrow@2x.png") no-repeat
-          center/100%;
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+        &:after {
+          content: "";
+          display: inline-block;
+          width: 1.5rem;
+          height: 100%;
+          margin-left: 0.5rem;
+          height: 1.2rem;
+          background: url("~@/assets/images/cta_arrow@2x.png") no-repeat
+            center/100%;
+        }
       }
     }
     h3 {

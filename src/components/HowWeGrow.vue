@@ -1,10 +1,9 @@
 <template>
   <div id="grow" class="grow__container-outer">
-    <div
-      class="grow__how-we-grow fade-in"
-      :class="{ active: section1 }"
-      :style="{ backgroundImage: bgImg }"
-    >
+    <div class="grow__parallax parallax-container">
+      <div class="grow__bg-parallax" :style="{ backgroundImage: bgImg }"></div>
+    </div>
+    <div class="grow__how-we-grow">
       <article class="grow__how-we-grow-text" :class="{ active: section1 }">
         <h1 class="cutouts">How we grow it</h1>
         <p>
@@ -16,10 +15,7 @@
         </p>
       </article>
     </div>
-    <div class="grow__badger" :class="{ active: section2 }">
-      <img :src="badgerImg" />
-    </div>
-    <div class="grow__section-two fade-in" :class="{ active: section2 }">
+    <div class="grow__section-two fade-in">
       <div class="grow__contact contact-details">
         <ul>
           <li>
@@ -36,16 +32,19 @@
         </ul>
       </div>
       <div class="grow__insta">
-        <div class="insta-img-wrapper" :class="{ active: section2 }">
+        <div class="insta-img-wrapper">
           <img src="../assets/images/insta_1@1x.jpg" />
         </div>
-        <div class="insta-img-wrapper" :class="{ active: section2 }">
+        <div class="insta-img-wrapper">
           <img src="../assets/images/insta_2@1x.jpg" />
         </div>
-        <div class="insta-img-wrapper" :class="{ active: section2 }">
+        <div class="insta-img-wrapper">
           <img src="../assets/images/insta_3@1x.jpg" />
         </div>
       </div>
+    </div>
+    <div class="grow__badger">
+      <img :src="badgerImg" />
     </div>
   </div>
 </template>
@@ -55,30 +54,36 @@ export default {
   data() {
     return {
       bgImg: `url(${this.resources.how_we_grow.img.src})`,
-      badgerImg: this.resources.badger.img.src,
-      section1: false,
-      section2: false
+      badgerImg: this.resources.badger.img.src
     };
   },
   methods: {
     initScrollActions() {
-      console.log(this.scroller);
-      let component = this;
-      var scene1 = new ScrollMagic.Scene({
-        triggerElement: ".grow__container-outer",
-        triggerHook: 0.9
+      let parallax = new ScrollMagic.Scene({
+        triggerElement: ".grow__parallax",
+        triggerHook: "onEnter",
+        duration: "200%"
       })
-        .on("start", function(e) {
-          component.section1 = true;
-        })
+        .setTween(".grow__bg-parallax", { y: "70%", ease: Linear.easeNone })
         .addTo(this.scroller);
-      var scene2 = new ScrollMagic.Scene({
-        triggerElement: ".grow__badger",
-        triggerHook: 0.5
+
+      let scene1 = new ScrollMagic.Scene({
+        triggerElement: ".grow__container-outer",
+        triggerHook: 0.7
       })
-        .on("start", function(e) {
-          component.section2 = true;
-        })
+        .setClassToggle(".grow__how-we-grow-text", "active")
+        .reverse(false)
+        .addTo(this.scroller);
+
+      let scene2 = new ScrollMagic.Scene({
+        triggerElement: ".grow__badger",
+        triggerHook: 0.4
+      })
+        .setClassToggle(
+          ".grow__section-two, .grow__badger, .insta-img-wrapper",
+          "active"
+        )
+        .reverse(false)
         .addTo(this.scroller);
     }
   },

@@ -1,9 +1,11 @@
 module.exports = {
   publicPath: "./",
   configureWebpack: {
-    externals: {
+    // Don't think this is needed
+    /* externals: {
+      gsap: "TweenMax",
       ScrollMagic: "ScrollMagic"
-    }
+    } */
   },
   productionSourceMap: false,
   devServer: {

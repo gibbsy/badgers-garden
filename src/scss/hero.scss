@@ -21,10 +21,59 @@
   display: flex;
   justify-content: center;
   @include bp(768) {
-    align-items: center;
+    flex-direction: column;
+    //align-items: center;
     width: 50%;
     height: 100%;
     padding: 0 10%;
+  }
+}
+.hero__copy {
+  h1,
+  p {
+    overflow: hidden;
+  }
+  span.word {
+    opacity: 0;
+    transform: translateY(2rem);
+    animation: slide-up-text 0.5s ease-out forwards;
+    animation-delay: calc(0.1s * var(--line-index));
+    //@include stagger-children(animation, 30, 0.1, 0.05);
+  }
+}
+@keyframes slide-up-text {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero__cta-btns {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: slide-up-text 0.5s ease-out forwards;
+  animation-delay: 500ms;
+
+  a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    background: $appLightGreen;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    &:last-child {
+      margin-left: 2rem;
+    }
+    &:hover {
+      background-color: $appMidGreen;
+    }
   }
 }
 .hero__contact-details,
@@ -47,31 +96,5 @@
   @include bp(768) {
     width: 50%;
     height: 100%;
-  }
-}
-
-.hero__slideshow-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* BG IMAGE HAS BEEN PRELOADED AND SET INLINE */
-.hero__image-slide {
-  @include abs100();
-  transform-origin: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &.ready {
-    animation: zoom-out 3s forwards ease-out;
-  }
-  img {
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
   }
 }

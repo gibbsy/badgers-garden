@@ -1,7 +1,10 @@
 <template>
   <div class="loading__container">
+    <div class="loading__icon">
+      <img src="../assets/images/can_icon.svg" />
+    </div>
     <h2>
-      Loading - please wait
+      Getting the garden ready - thanks for waiting
     </h2>
   </div>
 </template>

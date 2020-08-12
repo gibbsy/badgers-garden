@@ -1,12 +1,15 @@
 <template>
-  <div
-    class="order__container-outer fade-in"
-    :style="{ backgroundImage: `url(${resources.garden.url})` }"
-  >
+  <div class="order__container-outer">
+    <div class="order__parallax parallax-container">
+      <div
+        class="order__bg-parallax"
+        :style="{ backgroundImage: `url(${resources.garden.url})` }"
+      ></div>
+    </div>
     <div class="order__info">
       <h1 class="cutouts">Order now</h1>
       <p>
-        For more information about what’s available, or toplace your order get
+        For more information about what’s available, or to place your order get
         in touch by phone or email:
       </p>
       <ul class="contact-details">
@@ -25,21 +28,19 @@ export default {
   props: ["scroller", "resources"],
   methods: {
     initScrollActions() {
-      let component = this;
-      let el = document.querySelector(".order__container-outer");
-      console.log(el);
-      var scene1 = new ScrollMagic.Scene({
-        triggerElement: el,
-        triggerHook: 0.6
+      let parallax = new ScrollMagic.Scene({
+        triggerElement: ".order__container-outer",
+        triggerHook: "onEnter",
+        duration: "200%"
       })
-        .setClassToggle(el, "active")
-        .reverse(false)
+        .setTween(".order__bg-parallax", { y: "70%", ease: Linear.easeNone })
         .addTo(this.scroller);
-      var scene2 = new ScrollMagic.Scene({
-        triggerElement: el,
+
+      var scene1 = new ScrollMagic.Scene({
+        triggerElement: ".order__container-outer",
         triggerHook: 0.6
       })
-        .setClassToggle(el, "active")
+        .setClassToggle(".order__info", "active")
         .reverse(false)
         .addTo(this.scroller);
     }

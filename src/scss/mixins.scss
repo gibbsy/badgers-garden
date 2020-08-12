@@ -1,7 +1,8 @@
-$appLightGrey: #e4e4e4;
-$appGrey: #44575a;
-$appDarkGrey: #002b36;
-$borderWidth: 6px;
+$appBg: #f6f4ef;
+$appLightGreen: #b7cc5f;
+$appMidGreen: #5a6627;
+$appPanelBg: #2f3514;
+$appDarkGreen: #1d200c;
 
 @mixin abs100() {
   position: absolute;
@@ -42,10 +43,10 @@ $borderWidth: 6px;
   }
 }
 
-@mixin transition-delay($children, $delay, $stagger) {
+@mixin stagger-children($prop, $children, $delay, $stagger) {
   @for $i from 1 through $children {
     &:nth-child(#{$i}) {
-      transition-delay: #{$delay + $i * $stagger}s;
+      #{$prop}-delay: #{$delay + $i * $stagger}s;
     }
   }
 }

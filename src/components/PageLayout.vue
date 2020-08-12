@@ -5,7 +5,7 @@
         <img alt="Badgers Garden" :src="logo" />
       </div>
     </div>
-    <hero-holding :resources="resources" />
+    <hero :resources="resources" />
     <how-we-grow :resources="resources" :scroller="controller" />
     <products :productList="productList" :scroller="controller" />
     <order-now :resources="resources" :scroller="controller" />
@@ -13,9 +13,8 @@
   </div>
 </template>
 <script>
-//import ScrollMagic from "ScrollMagic";
 import loader from "../scripts/Preloader";
-import HeroHolding from "./HeroHolding";
+import Hero from "./Hero";
 import HowWeGrow from "./HowWeGrow";
 import Products from "./Products";
 import OrderNow from "./OrderNow";
@@ -23,7 +22,7 @@ import OrderNow from "./OrderNow";
 export default {
   props: ["resources", "productList"],
   components: {
-    HeroHolding,
+    Hero,
     HowWeGrow,
     Products,
     OrderNow
@@ -39,6 +38,12 @@ export default {
   },
   mounted() {
     this.controller = new ScrollMagic.Controller();
+    gsap.fromTo(
+      ".logo",
+      { rotationY: 90, opacity: 0 },
+      { rotationY: 0, opacity: 1 },
+      1
+    );
   }
 };
 </script>
