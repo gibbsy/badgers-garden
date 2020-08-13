@@ -6,57 +6,88 @@
   align-items: center;
   h1.cutouts {
     font-size: 2rem;
-    margin: 5rem 0;
     color: $appLightGreen;
+    margin: 3rem 0;
+    @include bp(768) {
+      margin: 5rem 0;
+    }
   }
   .product {
     position: relative;
-    width: 80%;
+    width: 90%;
     display: flex;
     background: #fff;
     opacity: 0;
-    transition: all 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     margin-top: 5rem;
     align-items: center;
-
+    flex-direction: column;
+    transform: translateY(30px);
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+      .product__text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
     &:first-of-type {
       margin-top: 0;
     }
     &:last-child {
       margin-bottom: 5rem;
     }
-    &.pull-left {
-      margin-right: auto;
-      flex-flow: row-reverse;
-      transform: translateX(-50px);
-      &.active {
-        transform: translateX(0);
-        opacity: 1;
-        .product__text {
+    @include bp(768) {
+      width: 80%;
+      flex-direction: row;
+      transform: translateY(0);
+      &.pull-left {
+        margin-right: auto;
+        flex-flow: row-reverse;
+        transform: translateX(-50px);
+        &.active {
+          transform: translateX(0);
           opacity: 1;
+          .product__text {
+            opacity: 1;
+          }
+        }
+      }
+      &.pull-right {
+        margin-left: auto;
+        transform: translateX(50px);
+        &.active {
+          transform: translateX(0);
+          opacity: 1;
+          .product__text {
+            opacity: 1;
+          }
         }
       }
     }
-    &.pull-right {
-      margin-left: auto;
-      transform: translateX(50px);
-      &.active {
-        transform: translateX(0);
-        opacity: 1;
-        .product__text {
-          opacity: 1;
-        }
+    .product__image {
+      max-width: 100%;
+      img {
+        max-width: 100%;
+        display: inline-block;
       }
     }
     .product__text {
-      width: 30rem;
+      width: 100%;
+      padding: 2rem;
       opacity: 0;
-      transition: opacity 0.8s 0.3s ease;
-      &.pull-left {
-        margin-right: 5rem;
-      }
-      &.pull-right {
-        margin-left: 5rem;
+      transform: translateY(30px);
+      transition: opacity 0.8s 0.3s ease, transform 0.8s 0.3s ease;
+      @include bp(768) {
+        transform: translateY(0);
+        width: 30rem;
+        padding: 0;
+        &.pull-left {
+          margin-right: 5rem;
+        }
+        &.pull-right {
+          margin-left: 5rem;
+        }
       }
       p {
         line-height: 1.5;

@@ -42,6 +42,7 @@ h1 {
   &.cutouts {
     font-family: "mixcutoutsmedium";
     text-align: left;
+    font-size: 2rem;
     @include bp(768) {
       margin-bottom: 2rem;
       font-size: 2.5rem;
@@ -63,8 +64,11 @@ h2 {
   }
 }
 p {
-  line-height: 2;
+  line-height: 1.5;
   font-size: 1.1rem;
+  @include bp(768) {
+    line-height: 2;
+  }
 }
 ul {
   margin-top: 0.5rem;
@@ -127,6 +131,20 @@ a {
       }
       img {
         max-width: 100%;
+      }
+    }
+    .contact-details {
+      position: absolute;
+      top: 3rem;
+      right: 2rem;
+      text-align: right;
+      z-index: 2;
+      opacity: 0;
+      animation: fade-in 0.5s 1.2s forwards ease-out;
+      a {
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
       }
     }
   }

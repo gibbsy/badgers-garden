@@ -32,7 +32,7 @@
         <p>{{ product.description }}</p>
         <div class="product__cta">
           <h2>{{ product.price }}</h2>
-          <a href="" class="order__cta">Order now</a>
+          <a href @click.prevent="orderNow" class="order__cta">Order now</a>
         </div>
       </div>
     </div>
@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     initScrollActions() {
+      let prodTrigger = window.screen.width > 767 ? 0.8 : 0.5;
       var scene1 = new ScrollMagic.Scene({
         triggerElement: ".products__container-outer",
         triggerHook: 0.7
@@ -64,7 +65,7 @@ export default {
       productEls.forEach((el, index) => {
         let scene = new ScrollMagic.Scene({
           triggerElement: el,
-          triggerHook: 0.8
+          triggerHook: prodTrigger
         })
           .setClassToggle(el, "active")
           .reverse(false)
@@ -73,6 +74,13 @@ export default {
     },
     urlFor(source) {
       return urlBuilder.image(source);
+    },
+    orderNow() {
+      gsap.to(window, {
+        duration: 2,
+        scrollTo: "#order-now",
+        ease: Power2.easeInOut
+      });
     }
   },
   mounted() {

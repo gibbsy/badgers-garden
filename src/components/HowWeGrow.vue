@@ -13,6 +13,19 @@
           feed the soil with a cocktail of compost including spent hops from
           Rebellion Brewery, horse muck from down the road, wood ash, carboard.
         </p>
+        <ul class="contact-details">
+          <li>
+            <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
+          </li>
+          <li>
+            <a href="tel:+447973489993">Call 07973 489993</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/thebadgersgarden/"
+              >follow @thebadgersgarden for updates</a
+            >
+          </li>
+        </ul>
       </article>
     </div>
     <div class="grow__section-two fade-in">
@@ -78,7 +91,7 @@ export default {
 
       let scene2 = new ScrollMagic.Scene({
         triggerElement: ".grow__badger",
-        triggerHook: 0.5
+        triggerHook: 0.6
       })
         .setClassToggle(
           ".grow__section-two, .grow__badger, .insta-img-wrapper",

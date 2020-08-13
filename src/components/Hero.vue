@@ -12,7 +12,7 @@
       </div>
       <div class="hero__cta-btns">
         <a href @click.prevent="viewProduce">View produce</a>
-        <a href>Order now</a>
+        <a href @click.prevent="orderNow">Order now</a>
       </div>
     </div>
     <div class="hero__image-container">
@@ -50,6 +50,13 @@ export default {
       gsap.to(window, {
         duration: 2,
         scrollTo: "#products",
+        ease: Power2.easeInOut
+      });
+    },
+    orderNow() {
+      gsap.to(window, {
+        duration: 3,
+        scrollTo: "#order-now",
         ease: Power2.easeInOut
       });
     }

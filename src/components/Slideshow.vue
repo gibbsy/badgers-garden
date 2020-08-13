@@ -17,7 +17,8 @@ export default {
   props: ["slides", "delayStart", "interval"],
   data() {
     return {
-      index: -1
+      index: -1,
+      timingRef: 0
     };
   },
   computed: {
@@ -27,11 +28,14 @@ export default {
   },
   methods: {
     start() {
-      let interval = this.interval || 8000;
+      let interval = this.interval || 8;
       this.index = 0;
-      setInterval(() => {
-        ++this.index;
-      }, interval);
+      this.timingRef = gsap.delayedCall(interval, this.slideChange);
+    },
+    slideChange() {
+      let interval = this.interval || 8;
+      ++this.index;
+      this.timingRef = gsap.delayedCall(interval, this.slideChange);
     }
   },
   mounted() {

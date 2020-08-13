@@ -1,6 +1,14 @@
 <template>
   <div class="app__container-inner">
     <div class="logo__container">
+      <ul class="contact-details">
+        <li>
+          <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
+        </li>
+        <li>
+          <a href="tel:+447973489993">Call 07973 489993</a>
+        </li>
+      </ul>
       <div class="logo">
         <img alt="Badgers Garden" :src="logo" />
       </div>

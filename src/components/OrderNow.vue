@@ -1,5 +1,5 @@
 <template>
-  <div class="order__container-outer">
+  <div class="order__container-outer" id="order-now">
     <div class="order__parallax parallax-container">
       <div
         class="order__bg-parallax"
