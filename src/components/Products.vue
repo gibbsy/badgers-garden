@@ -39,13 +39,14 @@
   </div>
 </template>
 <script>
+import scrollController from "../scripts/scrollController";
 import sanity from "../scripts/sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
 const urlBuilder = imageUrlBuilder(sanity);
 
 export default {
-  props: ["scroller", "productList"],
+  props: ["productList"],
   data() {
     return {};
   },
@@ -56,7 +57,7 @@ export default {
         triggerHook: 0.7
       })
         .setClassToggle(".products__container-outer", "active")
-        .addTo(this.scroller);
+        .addTo(scrollController);
 
       let productEls = document.querySelectorAll(".product");
       console.log(productEls);
@@ -67,7 +68,7 @@ export default {
         })
           .setClassToggle(el, "active")
           .reverse(false)
-          .addTo(this.scroller);
+          .addTo(scrollController);
       });
     },
     urlFor(source) {

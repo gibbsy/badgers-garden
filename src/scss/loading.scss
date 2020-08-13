@@ -1,0 +1,67 @@
+.loading__container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .loading__icon {
+    position: relative;
+    width: 6vw;
+    .water {
+      position: absolute;
+      transform: rotate(35deg) translate(10px, 5px);
+      .drop {
+        margin: 1px;
+        width: 10px;
+        height: 4px;
+        border-radius: 3px;
+        background-color: #87b4f8;
+        opacity: 0;
+      }
+      &.active {
+        .drop {
+          animation: water 0.5s forwards infinite linear;
+          //@include stagger-children(animation, 6, 0.2, 0.2);
+          &:nth-child(1) {
+            animation-delay: 0.2s;
+          }
+          &:nth-child(2) {
+            animation-delay: 0s;
+          }
+          &:nth-child(3) {
+            animation-delay: 0.3s;
+          }
+          &:nth-child(4) {
+            animation-delay: 0.1s;
+          }
+          &:nth-child(5) {
+            animation-delay: 0.4s;
+          }
+        }
+      }
+    }
+    .can {
+      width: 100%;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+@keyframes water {
+  0% {
+    transform: translateX(0) scaleX(0.1);
+  }
+  80% {
+    transform: translateX(-30px) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px) scaleX(1);
+    opacity: 0;
+  }
+}

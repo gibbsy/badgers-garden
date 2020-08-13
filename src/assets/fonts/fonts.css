@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "xetbookbold";
+  src: url("~@/assets/fonts/xetbook-bold-webfont.woff2") format("woff2"),
+    url("~@/assets/fonts/xetbook-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "xetbookmedium";
+  src: url("~@/assets/fonts/xetbook-medium-webfont.woff2") format("woff2"),
+    url("~@/assets/fonts/xetbook-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "xetbookregular";
+  src: url("~@/assets/fonts/xetbook-regular-webfont.woff2") format("woff2"),
+    url("~@/assets/fonts/xetbook-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "avenir";
+  font-weight: 300;
+  font-style: normal;
+  src: url("~@/assets/fonts/avenir-book.woff") format("woff");
+}
+
+@font-face {
+  font-family: "avenir";
+  font-weight: 500;
+  font-style: normal;
+  src: url("~@/assets/fonts/avenir-medium.woff") format("woff");
+}
+@font-face {
+  font-family: "avenir";
+  font-weight: 600;
+  font-weight: bold;
+  font-style: normal;
+  src: url("~@/assets/fonts/avenir-heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: "mixcutoutsmedium";
+  src: url("~@/assets/fonts/mixcutouts-webfont.woff2") format("woff2"),
+    url("~@/assets/fonts/mixcutouts-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

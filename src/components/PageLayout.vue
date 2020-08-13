@@ -6,13 +6,14 @@
       </div>
     </div>
     <hero :resources="resources" />
-    <how-we-grow :resources="resources" :scroller="controller" />
-    <products :productList="productList" :scroller="controller" />
-    <order-now :resources="resources" :scroller="controller" />
+    <how-we-grow :resources="resources" />
+    <products :productList="productList" />
+    <order-now :resources="resources" />
     <footer><a href="">Privacy Policy</a></footer>
   </div>
 </template>
 <script>
+import scrollController from "../scripts/scrollController";
 import loader from "../scripts/Preloader";
 import Hero from "./Hero";
 import HowWeGrow from "./HowWeGrow";
@@ -29,15 +30,13 @@ export default {
   },
   data() {
     return {
-      logo: this.resources.logo.img.src,
-      controller: {}
+      logo: this.resources.logo.img.src
     };
   },
   methods: {
     initScroll() {}
   },
   mounted() {
-    this.controller = new ScrollMagic.Controller();
     gsap.fromTo(
       ".logo",
       { rotationY: 90, opacity: 0 },

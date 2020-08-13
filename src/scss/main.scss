@@ -92,9 +92,13 @@ a {
   line-height: 1.1;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   .app__container-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0;
     position: relative;
-    max-width: 1920px;
+    //max-width: 1920px;
   }
 
   .logo__container {
@@ -126,23 +130,6 @@ a {
       }
     }
   }
-  .loading__container {
-    @include abs100();
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    .loading__icon {
-      width: 5vw;
-      animation: blink 1s infinite ease-in-out;
-      img {
-        max-width: 100%;
-      }
-    }
-    h2 {
-    }
-  }
   .fade-in {
     opacity: 0;
     transition: opacity 0.8s ease-out;
@@ -161,5 +148,12 @@ a {
     a {
       margin-left: auto;
     }
+  }
+  .error {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

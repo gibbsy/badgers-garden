@@ -4,7 +4,7 @@
       <div class="grow__bg-parallax" :style="{ backgroundImage: bgImg }"></div>
     </div>
     <div class="grow__how-we-grow">
-      <article class="grow__how-we-grow-text" :class="{ active: section1 }">
+      <article class="grow__how-we-grow-text">
         <h1 class="cutouts">How we grow it</h1>
         <p>
           We grow a ‘no dig’ garden, which improves soil health as your plants
@@ -49,8 +49,9 @@
   </div>
 </template>
 <script>
+import scrollController from "../scripts/scrollController";
 export default {
-  props: ["resources", "scroller"],
+  props: ["resources"],
   data() {
     return {
       bgImg: `url(${this.resources.how_we_grow.img.src})`,
@@ -65,26 +66,26 @@ export default {
         duration: "200%"
       })
         .setTween(".grow__bg-parallax", { y: "70%", ease: Linear.easeNone })
-        .addTo(this.scroller);
+        .addTo(scrollController);
 
       let scene1 = new ScrollMagic.Scene({
         triggerElement: ".grow__container-outer",
-        triggerHook: 0.7
+        triggerHook: 0.8
       })
         .setClassToggle(".grow__how-we-grow-text", "active")
-        .reverse(false)
-        .addTo(this.scroller);
+        //.reverse(false)
+        .addTo(scrollController);
 
       let scene2 = new ScrollMagic.Scene({
         triggerElement: ".grow__badger",
-        triggerHook: 0.4
+        triggerHook: 0.5
       })
         .setClassToggle(
           ".grow__section-two, .grow__badger, .insta-img-wrapper",
           "active"
         )
         .reverse(false)
-        .addTo(this.scroller);
+        .addTo(scrollController);
     }
   },
   mounted() {

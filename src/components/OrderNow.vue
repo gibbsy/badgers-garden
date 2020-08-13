@@ -24,8 +24,9 @@
   </div>
 </template>
 <script>
+import scrollController from "../scripts/scrollController";
 export default {
-  props: ["scroller", "resources"],
+  props: ["resources"],
   methods: {
     initScrollActions() {
       let parallax = new ScrollMagic.Scene({
@@ -33,16 +34,16 @@ export default {
         triggerHook: "onEnter",
         duration: "200%"
       })
-        .setTween(".order__bg-parallax", { y: "70%", ease: Linear.easeNone })
-        .addTo(this.scroller);
+        .setTween(".order__bg-parallax", { y: "80%", ease: Linear.easeNone })
+        .addTo(scrollController);
 
       var scene1 = new ScrollMagic.Scene({
         triggerElement: ".order__container-outer",
         triggerHook: 0.6
       })
         .setClassToggle(".order__info", "active")
-        .reverse(false)
-        .addTo(this.scroller);
+        //.reverse(false)
+        .addTo(scrollController);
     }
   },
   mounted() {

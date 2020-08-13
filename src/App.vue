@@ -1,15 +1,9 @@
 <template>
   <div id="app">
-    <div class="error" v-if="error"><h1>Oops something went wrong</h1></div>
+    <div class="error" v-if="error"><h3>Oops something went wrong</h3></div>
     <transition name="quick-fade" mode="out-in" appear>
-      <loading v-if="loading" />
-    </transition>
-    <transition name="quick-fade" mode="out-in" appear>
-      <page-layout
-        v-if="!loading"
-        :resources="resources"
-        :productList="productList"
-      />
+      <loading v-if="loaded === false" />
+      <page-layout v-else :resources="resources" :productList="productList" />
     </transition>
   </div>
 </template>
@@ -33,16 +27,21 @@ export default {
   },
   data() {
     return {
-      imagesLoading: true,
-      dataLoading: true,
+      imagesLoaded: false,
+      dataLoaded: false,
+      animationPlayed: false,
       resources: {},
       productList: {},
       error: null
     };
   },
   computed: {
-    loading() {
-      return !(this.imagesLoading == false && this.dataLoading == false);
+    loaded() {
+      return (
+        this.imagesLoaded === true &&
+        this.dataLoaded === true &&
+        this.animationPlayed === true
+      );
     }
   },
   methods: {
@@ -50,7 +49,7 @@ export default {
       sanity.fetch(query).then(
         data => {
           this.productList = data[0].productList;
-          this.dataLoading = false;
+          this.dataLoaded = true;
           console.log(data[0].productList);
         },
         error => {
@@ -60,9 +59,12 @@ export default {
     }
   },
   mounted() {
+    bus.$on("ANIMATION_PLAYED", () => {
+      this.$nextTick(() => (this.animationPlayed = true));
+    });
     //  CUSTOM PRELOADER
     bus.$on("LOAD_COMPLETE", () => {
-      this.imagesLoading = false;
+      this.imagesLoaded = true;
       this.resources = loader.resources;
       console.log("LOADING COMPLETE");
     });
