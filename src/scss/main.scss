@@ -113,7 +113,7 @@ a {
     z-index: 10;
     padding-top: 1.5rem;
     padding-left: 1.5rem;
-    @include bp(768) {
+    @include bp(1024) {
       padding-top: 2rem;
       padding-left: 0;
       justify-content: center;
