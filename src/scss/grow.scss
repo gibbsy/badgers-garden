@@ -142,6 +142,7 @@
       justify-content: flex-end;
     }
     @include bp(1024) {
+      padding: 0;
       padding-right: 5%;
       width: 50%;
     }
