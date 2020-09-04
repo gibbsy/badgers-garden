@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <div class="error" v-if="error"><h3>Oops something went wrong</h3></div>
+    <div class="error" v-if="error">
+      <h3>Oops something went wrong</h3>
+    </div>
     <transition name="quick-fade" mode="out-in" appear>
       <loading v-if="loaded === false" />
       <page-layout v-else :resources="resources" :productList="productList" />
@@ -16,14 +18,14 @@ import bus from "./scripts/bus";
 import Loading from "./components/Loading.vue";
 import PageLayout from "./components/PageLayout.vue";
 
-const query = `*[_type=="productList" && title=="Current Products"]
+const query = `*[_type=="productList"]
 {'productList': currentProducts[]->{_id, title, image, description, price}}`;
 
 export default {
   name: "App",
   components: {
     Loading,
-    PageLayout
+    PageLayout,
   },
   data() {
     return {
@@ -32,7 +34,7 @@ export default {
       animationPlayed: false,
       resources: {},
       productList: {},
-      error: null
+      error: null,
     };
   },
   computed: {
@@ -42,21 +44,21 @@ export default {
         this.dataLoaded === true &&
         this.animationPlayed === true
       );
-    }
+    },
   },
   methods: {
     fetchData() {
       sanity.fetch(query).then(
-        data => {
+        (data) => {
           this.productList = data[0].productList;
           this.dataLoaded = true;
           console.log(data[0].productList);
         },
-        error => {
+        (error) => {
           this.error = error;
         }
       );
-    }
+    },
   },
   mounted() {
     bus.$on("ANIMATION_PLAYED", () => {
@@ -70,7 +72,7 @@ export default {
     });
     loader.init(manifest, true);
     this.fetchData();
-  }
+  },
 };
 </script>
 
