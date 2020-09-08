@@ -18,32 +18,34 @@ export default {
   data() {
     return {
       index: -1,
-      timingRef: 0
+      timingRef: 0,
     };
   },
   computed: {
     currentIndex() {
       return this.index % this.slides.length;
-    }
+    },
   },
   methods: {
     start() {
       let interval = this.interval || 8;
       this.index = 0;
-      this.timingRef = gsap.delayedCall(interval, this.slideChange);
+      if (this.slides.length > 1) {
+        this.timingRef = gsap.delayedCall(interval, this.slideChange);
+      }
     },
     slideChange() {
       let interval = this.interval || 8;
       ++this.index;
       this.timingRef = gsap.delayedCall(interval, this.slideChange);
-    }
+    },
   },
   mounted() {
     let delay = this.delayStart || 500;
     setTimeout(() => {
       this.start();
     }, delay);
-  }
+  },
 };
 </script>
 <style lang="scss">

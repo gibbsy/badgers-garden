@@ -13,11 +13,13 @@
         <img alt="Badgers Garden" :src="logo" />
       </div>
     </div>
-    <hero :resources="resources" />
-    <how-we-grow :resources="resources" />
+    <hero :resources="resources" :content="heroContent" />
+    <how-we-grow :resources="resources" :content="growContent" />
     <products :productList="productList" />
-    <order-now :resources="resources" />
-    <footer><a href="">Privacy Policy</a></footer>
+    <order-now :resources="resources" :content="ctaTxt" />
+    <footer>
+      <a href>Privacy Policy</a>
+    </footer>
   </div>
 </template>
 <script>
@@ -29,20 +31,29 @@ import Products from "./Products";
 import OrderNow from "./OrderNow";
 
 export default {
-  props: ["resources", "productList"],
+  props: ["resources", "productList", "siteCopy"],
   components: {
     Hero,
     HowWeGrow,
     Products,
-    OrderNow
+    OrderNow,
   },
   data() {
     return {
-      logo: this.resources.logo.img.src
+      logo: this.resources.logo.img.src,
+      heroContent: {
+        title: this.siteCopy.title,
+        intro: this.siteCopy.intro,
+      },
+      growContent: {
+        copy: this.siteCopy.growTxt,
+        insta: this.siteCopy.insta,
+      },
+      ctaTxt: this.siteCopy.ctaTxt,
     };
   },
   methods: {
-    initScroll() {}
+    initScroll() {},
   },
   mounted() {
     gsap.fromTo(
@@ -51,7 +62,7 @@ export default {
       { rotationY: 0, opacity: 1 },
       1
     );
-  }
+  },
 };
 </script>
 <style lang="scss"></style>

@@ -2,13 +2,8 @@
   <div class="hero__container-outer">
     <div class="hero__copy-container">
       <div class="hero__copy" data-splitting>
-        <h1>
-          Fresh locally grown salad delivered to your door.
-        </h1>
-        <p>
-          We grow seasonal salads and vegetables and deliver to customers within
-          a 5 mile radius of our garden in Princes Risburgh
-        </p>
+        <h1>{{ content.title }}</h1>
+        <p>{{ content.intro }}</p>
       </div>
       <div class="hero__cta-btns">
         <a href @click.prevent="viewProduce">View produce</a>
@@ -26,13 +21,13 @@
 import loader from "../scripts/Preloader";
 import Slideshow from "./Slideshow";
 export default {
-  props: ["resources"],
+  props: ["resources", "content"],
   components: {
-    Slideshow
+    Slideshow,
   },
   data() {
     return {
-      slides: []
+      slides: [],
     };
   },
   methods: {
@@ -43,23 +38,23 @@ export default {
         /* by: String of the plugin name */
         by: "lines",
         /* key: Optional String to prefix the CSS variables */
-        key: null
+        key: null,
       });
     },
     viewProduce() {
       gsap.to(window, {
         duration: 2,
         scrollTo: "#products",
-        ease: Power2.easeInOut
+        ease: Power2.easeInOut,
       });
     },
     orderNow() {
       gsap.to(window, {
         duration: 3,
         scrollTo: "#order-now",
-        ease: Power2.easeInOut
+        ease: Power2.easeInOut,
       });
-    }
+    },
   },
   mounted() {
     for (let key in this.resources) {
@@ -69,7 +64,7 @@ export default {
       }
     }
     this.$nextTick(this.splitText);
-  }
+  },
 };
 </script>
 <style lang="scss">

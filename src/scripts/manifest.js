@@ -12,7 +12,7 @@ export default [
     id: "logo",
     url: require(`@/${imgPath}/logo${imgRes}.png`)
   },
-  {
+  /*  {
     id: "hero_1",
     url: require(`@/${imgPath}/hero_1${imgRes}.jpg`)
   },
@@ -23,7 +23,7 @@ export default [
   {
     id: "hero_3",
     url: require(`@/${imgPath}/hero_3${imgRes}.jpg`)
-  },
+  }, */
   {
     id: "how_we_grow",
     url: require(`@/${imgPath}/how_we_grow${imgRes}.jpg`)
