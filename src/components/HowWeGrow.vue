@@ -98,7 +98,6 @@ export default {
   },
   mounted() {
     this.$nextTick(this.initScrollActions);
-    console.log(this.content.copy);
   },
 };
 </script>
