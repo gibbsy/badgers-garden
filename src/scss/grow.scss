@@ -1,22 +1,23 @@
 .grow__container-outer {
   position: relative;
   width: 100%;
-  height: 130vh;
+  min-height: 130vh;
   display: flex;
   flex-direction: column;
   background: #fff;
   overflow: hidden;
+  padding-top: 10%;
 
   @include bp(mobLandscape) {
-    height: 200vh;
+    min-height: 200vh;
   }
   @include bp(768) {
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
   }
   @include bp(1024) {
     flex-direction: column;
-    height: 90vh;
+    min-height: 90vh;
   }
 }
 .grow__parallax {
@@ -30,7 +31,7 @@
   .grow__bg-parallax {
     position: relative;
     width: 100%;
-    height: 120vh;
+    height: 120%;
     top: -40%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -61,7 +62,7 @@
   height: 90%;
   background-color: rgba($appPanelBg, 0.9);
   color: #fff;
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 4rem 2rem 2rem 3rem;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -69,6 +70,19 @@
   transition: all 0.8s ease-out;
   transform: translateX(50px);
   transition-delay: 0.5s;
+  .contact-details {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    @include bp(768) {
+      display: none;
+    }
+    li {
+      margin-top: 1rem;
+    }
+    a {
+      color: #fff;
+    }
+  }
   @include bp(768) {
     width: 70%;
     height: 70%;
@@ -94,6 +108,7 @@
   margin-top: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: #121212;
   background-color: #fff;
   @include bp(768) {
@@ -138,16 +153,6 @@
           fill: $appDarkGreen;
         }
       }
-      /*  &:before {
-        content: url("~@/assets/images/insta_green.svg");
-        display: inline-block;
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-right: 0.5rem;
-        fill: red;
-        /* background: url("~@/assets/images/insta_green.svg") no-repeat
-          center/100%; 
-      } */
     }
   }
   .grow__insta {
@@ -155,6 +160,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 5% 0;
     @include bp(768) {
       width: 70%;
       padding: 0 0 3rem 3rem;

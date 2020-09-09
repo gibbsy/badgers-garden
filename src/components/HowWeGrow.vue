@@ -7,6 +7,17 @@
       <article class="grow__how-we-grow-text">
         <h1 class="cutouts">How we grow it</h1>
         <p>{{content.copy}}</p>
+        <ul class="contact-details contact-mobile">
+          <li>
+            <a href="mailto:badgerbolts@gmail.com">badgerbolts@gmail.com</a>
+          </li>
+          <li>
+            <a href="tel:+447973489993">Call 07973 489993</a>
+          </li>
+          <li>
+            <a class="insta" href="https://www.instagram.com/thebadgersgarden/">@thebadgersgarden</a>
+          </li>
+        </ul>
       </article>
     </div>
     <div class="grow__section-two fade-in">
