@@ -9,14 +9,34 @@ class Preloader {
     this.queue = 0;
   }
   init(manifest, autostart) {
-    this.manifest = manifest;
-    this.queue = manifest.length;
-    this.manifest.forEach(el => {
+    if (manifest) {
+      this.manifest = manifest;
+      this.queue = manifest.length;
+      this.manifest.forEach(el => {
+        el.img = new Image();
+        el.loaded = false;
+      });
+    }
+    if (autostart == true) {
+      this.start();
+    }
+  }
+  addImage(el) {
+    if (!this.manifest.find(item => item.id == el.id)) {
       el.img = new Image();
       el.loaded = false;
-    });
-    if (autostart == true) {
+      this.manifest.push(el);
+      this.queue = this.manifest.length;
+    } else {
+      console.warn("An item with this id is already in the queue.");
+      return;
+    }
+  }
+  start() {
+    if (this.manifest.length > 0) {
       this.loadImage();
+    } else {
+      console.warn("The manifest is empty, nothing to load.");
     }
   }
   loadImage() {

@@ -62,7 +62,7 @@ export default {
           this.productList = data.products[0].productList;
           this.slideshow = data.slideshow[0].slides;
           this.dataLoaded = true;
-          console.log(data);
+          //console.log(data);
           this.loadImages();
         },
         (error) => {
@@ -74,34 +74,39 @@ export default {
       return urlBuilder.image(source);
     },
     loadImages() {
-      const heroW = (window.screen.width * window.devicePixelRatio) / 2;
-      const heroH = window.screen.height * window.devicePixelRatio;
+      // detect screen size to set the hero aspect ratio
+      let heroW, heroH;
+      if (window.screen.width < 1024) {
+        heroW = window.screen.width * window.devicePixelRatio;
+        heroH = (window.screen.height * window.devicePixelRatio) / 2;
+      } else {
+        heroW = (window.screen.width * window.devicePixelRatio) / 2;
+        heroH = window.screen.height * window.devicePixelRatio;
+      }
+      // init the loader but don't autostart
+      loader.init(manifest, false);
       // build the hero slideshow urls and add to preload manifest
       this.slideshow.forEach((slide, i) => {
         let str = "hero_" + i;
-
-        if (!manifest.find((el) => el.id == str)) {
-          let item = {
-            id: str,
-            url: this.urlFor(slide.image).width(heroW).height(heroH).url(),
-          };
-          manifest.push(item);
-        }
+        let item = {
+          id: str,
+          url: this.urlFor(slide.image).width(heroW).height(heroH).url(),
+        };
+        loader.addImage(item);
       });
-      this.$nextTick(loader.init(manifest, true));
+      // load the images
+      this.$nextTick(loader.start());
     },
   },
   mounted() {
     bus.$on("ANIMATION_PLAYED", () => {
       this.$nextTick(() => (this.animationPlayed = true));
     });
-    //  CUSTOM PRELOADER
     bus.$on("LOAD_COMPLETE", () => {
       this.imagesLoaded = true;
       this.resources = loader.resources;
       console.log("LOADING COMPLETE");
     });
-
     this.fetchData();
   },
 };

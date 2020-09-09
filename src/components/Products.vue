@@ -55,17 +55,16 @@ export default {
       let prodTrigger = window.screen.width > 767 ? 0.8 : 0.5;
       var scene1 = new ScrollMagic.Scene({
         triggerElement: ".products__container-outer",
-        triggerHook: 0.7
+        triggerHook: 0.7,
       })
         .setClassToggle(".products__container-outer", "active")
         .addTo(scrollController);
 
       let productEls = document.querySelectorAll(".product");
-      console.log(productEls);
       productEls.forEach((el, index) => {
         let scene = new ScrollMagic.Scene({
           triggerElement: el,
-          triggerHook: prodTrigger
+          triggerHook: prodTrigger,
         })
           .setClassToggle(el, "active")
           .reverse(false)
@@ -79,13 +78,13 @@ export default {
       gsap.to(window, {
         duration: 2,
         scrollTo: "#order-now",
-        ease: Power2.easeInOut
+        ease: Power2.easeInOut,
       });
-    }
+    },
   },
   mounted() {
     this.$nextTick(this.initScrollActions);
-  }
+  },
 };
 </script>
 <style lang="scss">

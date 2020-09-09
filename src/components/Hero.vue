@@ -11,7 +11,6 @@
       </div>
     </div>
     <div class="hero__image-container">
-      <!-- <div class="hero__image-inner" :class="{ ready: ready }"></div> -->
       <slideshow :slides="slides" :delay-start="700" />
     </div>
   </div>
