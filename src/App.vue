@@ -62,7 +62,7 @@ export default {
           this.productList = data.products[0].productList;
           this.slideshow = data.slideshow[0].slides;
           this.dataLoaded = true;
-          //console.log(data);
+          console.log(data);
           this.loadImages();
         },
         (error) => {

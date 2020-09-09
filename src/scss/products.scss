@@ -40,6 +40,7 @@
       width: 90%;
       flex-direction: row;
       justify-content: space-around;
+
       &.pull-left {
         &.active {
           .product__text {
@@ -52,6 +53,7 @@
       transform: translateY(0);
       width: 80%;
       justify-content: flex-start;
+      padding: 3rem;
       &.pull-left {
         margin-right: auto;
         flex-flow: row-reverse;

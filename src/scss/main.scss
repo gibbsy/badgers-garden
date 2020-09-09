@@ -66,6 +66,10 @@ h2 {
 p {
   line-height: 1.5;
   font-size: 1.1rem;
+  margin-top: 1.1rem;
+  &:first-of-type {
+    margin-top: 0;
+  }
   @include bp(768) {
     line-height: 2;
   }
@@ -86,6 +90,26 @@ ul {
 }
 a {
   color: $appMidGreen;
+}
+a.insta {
+  display: flex;
+  align-items: center;
+  &:hover > svg {
+    fill: $appLightGreen;
+  }
+  svg {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    fill: #fff;
+    &:hover {
+      fill: $appLightGreen;
+    }
+  }
+}
+strong {
+  font-weight: 600;
 }
 #app {
   width: 100%;
@@ -164,8 +188,11 @@ a {
     align-items: center;
     width: 100%;
     height: 5rem;
-    padding: 0 5rem;
+    padding: 0 1rem;
     background: $appDarkGreen;
+    @include bp(1024) {
+      padding: 0 2rem;
+    }
     a {
       margin-left: auto;
     }
