@@ -77,11 +77,13 @@ export default {
       // detect screen size to set the hero aspect ratio
       let heroW, heroH;
       if (window.screen.width < 1024) {
-        heroW = window.screen.width * window.devicePixelRatio;
-        heroH = (window.screen.height * window.devicePixelRatio) / 2;
+        heroW = Math.round(window.screen.width * window.devicePixelRatio);
+        heroH = Math.round(
+          (window.screen.height * window.devicePixelRatio) / 2
+        );
       } else {
-        heroW = (window.screen.width * window.devicePixelRatio) / 2;
-        heroH = window.screen.height * window.devicePixelRatio;
+        heroW = Math.round((window.screen.width * window.devicePixelRatio) / 2);
+        heroH = Math.round(window.screen.height * window.devicePixelRatio);
       }
       // init the loader but don't autostart
       loader.init(manifest, false);
