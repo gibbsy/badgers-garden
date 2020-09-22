@@ -5,7 +5,12 @@
     </div>
     <transition name="quick-fade" mode="out-in" appear>
       <loading v-if="loaded === false" />
-      <page-layout v-else :resources="resources" :siteCopy="siteCopy" :productList="productList" />
+      <page-layout
+        v-else
+        :resources="resources"
+        :siteCopy="siteCopy"
+        :productList="productList"
+      />
     </transition>
   </div>
 </template>
@@ -31,18 +36,19 @@ export default {
   name: "App",
   components: {
     Loading,
-    PageLayout,
+    PageLayout
   },
   data() {
     return {
       imagesLoaded: false,
       dataLoaded: false,
       animationPlayed: false,
+      winSize: {},
       resources: {},
       siteCopy: {},
       slideshow: {},
       productList: {},
-      error: null,
+      error: null
     };
   },
   computed: {
@@ -52,12 +58,12 @@ export default {
         this.dataLoaded === true &&
         this.animationPlayed === true
       );
-    },
+    }
   },
   methods: {
     fetchData() {
       sanity.fetch(query).then(
-        (data) => {
+        data => {
           this.siteCopy = data.config[0];
           this.productList = data.products[0].productList;
           this.slideshow = data.slideshow[0].slides;
@@ -65,7 +71,7 @@ export default {
           console.log(data);
           this.loadImages();
         },
-        (error) => {
+        error => {
           this.error = error;
         }
       );
@@ -73,17 +79,36 @@ export default {
     urlFor(source) {
       return urlBuilder.image(source);
     },
+    calcRes() {
+      this.winSize = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        dpr: window.devicePixelRatio
+      };
+    },
     loadImages() {
+      const { winSize } = this;
       // detect screen size to set the hero aspect ratio
+      const w = winSize.width;
+      const h = winSize.height;
       let heroW, heroH;
-      if (window.screen.width < 1024) {
-        heroW = Math.round(window.screen.width * window.devicePixelRatio);
-        heroH = Math.round(
-          (window.screen.height * window.devicePixelRatio) / 2
-        );
+
+      if (w > 1919) {
+        heroW = 1280;
+        heroH = 1080;
+      } else if (w > 1279) {
+        heroW = 720;
+        heroH = 640;
+      } else if (w > 768) {
+        heroW = 512;
+        heroH = 420;
+      } else if (w == 768) {
+        heroW = 768;
+        heroH = 600;
       } else {
-        heroW = Math.round((window.screen.width * window.devicePixelRatio) / 2);
-        heroH = Math.round(window.screen.height * window.devicePixelRatio);
+        // for mobile
+        heroW = w;
+        heroH = h * 0.4;
       }
       // init the loader but don't autostart
       loader.init(manifest, false);
@@ -92,13 +117,19 @@ export default {
         let str = "hero_" + i;
         let item = {
           id: str,
-          url: this.urlFor(slide.image).width(heroW).height(heroH).url(),
+          url: this.urlFor(slide.image)
+            .width(heroW)
+            .height(heroH)
+            .format("jpg")
+            .quality(40)
+            .dpr(winSize.dpr > 1 ? 2 : 1)
+            .url()
         };
         loader.addImage(item);
       });
       // load the images
       this.$nextTick(loader.start());
-    },
+    }
   },
   mounted() {
     bus.$on("ANIMATION_PLAYED", () => {
@@ -110,7 +141,8 @@ export default {
       console.log("LOADING COMPLETE");
     });
     this.fetchData();
-  },
+    this.calcRes();
+  }
 };
 </script>
 

@@ -23,6 +23,7 @@
   top: 0;
   width: 100%;
   overflow: hidden;
+  flex-grow: 1;
   @include bp(768) {
     height: 100%;
   }

@@ -1,8 +1,7 @@
 /* 
 Images with an id containing "hero" will be added to the slideshow
 */
-const hiRes =
-  window.screen.width * window.devicePixelRatio > 1440 ? true : false;
+const hiRes = window.innerWidth * window.devicePixelRatio > 1440 ? true : false;
 const imgRes = hiRes == true ? "@2x" : "@1x";
 //console.log(imgRes);
 const imgPath = "assets/images";
