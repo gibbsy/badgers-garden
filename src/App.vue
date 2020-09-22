@@ -107,8 +107,8 @@ export default {
         heroH = 600;
       } else {
         // for mobile
-        heroW = w;
-        heroH = h * 0.4;
+        heroW = Math.round(w);
+        heroH = Math.round(h * 0.4);
       }
       // init the loader but don't autostart
       loader.init(manifest, false);
