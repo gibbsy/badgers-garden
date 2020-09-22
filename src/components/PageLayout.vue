@@ -36,24 +36,24 @@ export default {
     Hero,
     HowWeGrow,
     Products,
-    OrderNow,
+    OrderNow
   },
   data() {
     return {
       logo: this.resources.logo.img.src,
       heroContent: {
         title: this.siteCopy.title,
-        intro: this.siteCopy.intro,
+        intro: this.siteCopy.intro
       },
       growContent: {
         copy: this.siteCopy.growTxt,
-        insta: this.siteCopy.insta,
+        insta: this.siteCopy.insta
       },
-      ctaTxt: this.siteCopy.ctaTxt,
+      ctaTxt: this.siteCopy.ctaTxt
     };
   },
   methods: {
-    initScroll() {},
+    initScroll() {}
   },
   mounted() {
     gsap.fromTo(
@@ -62,7 +62,7 @@ export default {
       { rotationY: 0, opacity: 1 },
       1
     );
-  },
+  }
 };
 </script>
 <style lang="scss"></style>
