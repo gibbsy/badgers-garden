@@ -146,8 +146,8 @@ export default {
         bgW = 768;
         bgH = 540;
       } else {
-        bgW = 340;
-        bgH = 480;
+        bgW = 440;
+        bgH = 720;
       }
       const growBg = {
         id: "how_we_grow",
