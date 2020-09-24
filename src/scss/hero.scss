@@ -70,15 +70,13 @@
   }
   a {
     text-decoration: none;
-    padding: 1rem;
+    padding: 0.8rem;
     background: $appLightGreen;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     transition: background-color 0.2s;
-    font-size: 0.9rem;
     @include bp(768) {
-      font-size: 1rem;
       padding: 1rem 2rem;
     }
     &:last-child {
