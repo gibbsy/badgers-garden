@@ -10,6 +10,7 @@
         :resources="resources"
         :siteCopy="siteCopy"
         :productList="productList"
+        :winSize="winSize"
       />
     </transition>
   </div>
@@ -27,7 +28,7 @@ import imageUrlBuilder from "@sanity/image-url";
 const urlBuilder = imageUrlBuilder(sanity);
 
 const query = `{
-  "config": *[_type=="config"]{title,intro,growTxt,insta[]->{title, alt, image{asset}},ctaTxt},
+  "config": *[_type=="config"]{title,intro,growTxt,growBg,insta[]->{title, alt, image{asset}},ctaTxt, ctaBg},
   "slideshow": *[_type=="slideshow"]{'slides': slides[]->{image{asset}}},
   "products": *[_type=="productList"]{'productList': currentProducts[]->{_id, title, image, description, price}}
 }`;
@@ -127,6 +128,49 @@ export default {
         };
         loader.addImage(item);
       });
+      // add the bg parallax images
+      let bgW, bgH;
+      if (w > 1919) {
+        bgW = 1920;
+        bgH = 1080;
+      } else if (w >= 1440) {
+        bgW = 1440;
+        bgH = 1024;
+      } else if (w >= 1200) {
+        bgW = 1280;
+        bgH = 800;
+      } else if (w >= 1024) {
+        bgW = 1024;
+        bgH = 768;
+      } else if (w >= 768) {
+        bgW = 768;
+        bgH = 540;
+      } else {
+        bgW = 340;
+        bgH = 480;
+      }
+      const growBg = {
+        id: "how_we_grow",
+        url: this.urlFor(this.siteCopy.growBg)
+          .width(bgW)
+          .height(bgH)
+          .format("jpg")
+          .quality(20)
+          .dpr(winSize.dpr > 1 ? 2 : 1)
+          .url()
+      };
+      loader.addImage(growBg);
+      const ctaBg = {
+        id: "garden",
+        url: this.urlFor(this.siteCopy.ctaBg)
+          .width(bgW)
+          .height(bgH)
+          .format("jpg")
+          .quality(20)
+          .dpr(winSize.dpr > 1 ? 2 : 1)
+          .url()
+      };
+      loader.addImage(ctaBg);
       // load the images
       this.$nextTick(loader.start());
     }

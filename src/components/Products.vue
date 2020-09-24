@@ -16,6 +16,9 @@
             urlFor(product.image)
               .width(435)
               .height(300)
+              .format('jpg')
+              .quality(40)
+              .dpr(winSize.dpr > 1 ? 2 : 1)
               .url()
           "
           :alt="'Image of ' + product.title"
@@ -46,7 +49,7 @@ import imageUrlBuilder from "@sanity/image-url";
 const urlBuilder = imageUrlBuilder(sanity);
 
 export default {
-  props: ["productList"],
+  props: ["productList", "winSize"],
   data() {
     return {};
   },
@@ -55,7 +58,7 @@ export default {
       let prodTrigger = window.screen.width > 767 ? 0.8 : 0.5;
       var scene1 = new ScrollMagic.Scene({
         triggerElement: ".products__container-outer",
-        triggerHook: 0.7,
+        triggerHook: 0.7
       })
         .setClassToggle(".products__container-outer", "active")
         .addTo(scrollController);
@@ -64,7 +67,7 @@ export default {
       productEls.forEach((el, index) => {
         let scene = new ScrollMagic.Scene({
           triggerElement: el,
-          triggerHook: prodTrigger,
+          triggerHook: prodTrigger
         })
           .setClassToggle(el, "active")
           .reverse(false)
@@ -78,13 +81,13 @@ export default {
       gsap.to(window, {
         duration: 2,
         scrollTo: "#order-now",
-        ease: Power2.easeInOut,
+        ease: Power2.easeInOut
       });
-    },
+    }
   },
   mounted() {
     this.$nextTick(this.initScrollActions);
-  },
+  }
 };
 </script>
 <style lang="scss">

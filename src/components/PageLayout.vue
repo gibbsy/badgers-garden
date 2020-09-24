@@ -14,8 +14,12 @@
       </div>
     </div>
     <hero :resources="resources" :content="heroContent" />
-    <how-we-grow :resources="resources" :content="growContent" />
-    <products :productList="productList" />
+    <how-we-grow
+      :resources="resources"
+      :content="growContent"
+      :winSize="winSize"
+    />
+    <products :productList="productList" :winSize="winSize" />
     <order-now :resources="resources" :content="ctaTxt" />
     <footer>
       <a href>Privacy Policy</a>
@@ -31,7 +35,7 @@ import Products from "./Products";
 import OrderNow from "./OrderNow";
 
 export default {
-  props: ["resources", "productList", "siteCopy"],
+  props: ["resources", "productList", "siteCopy", "winSize"],
   components: {
     Hero,
     HowWeGrow,

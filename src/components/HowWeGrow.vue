@@ -68,8 +68,11 @@
             <img
               :src="
                 urlFor(img.image)
-                  .width(400)
-                  .height(400)
+                  .width(200)
+                  .height(200)
+                  .format('jpg')
+                  .quality(40)
+                  .dpr(winSize.dpr > 1 ? 2 : 1)
                   .url()
               "
               :alt="img.alt"
@@ -91,7 +94,7 @@ import imageUrlBuilder from "@sanity/image-url";
 const urlBuilder = imageUrlBuilder(sanity);
 
 export default {
-  props: ["resources", "content"],
+  props: ["resources", "content", "winSize"],
   data() {
     return {
       bgImg: `url(${this.resources.how_we_grow.img.src})`,

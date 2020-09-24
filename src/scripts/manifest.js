@@ -11,15 +11,7 @@ export default [
     url: require(`@/${imgPath}/logo${imgRes}.png`)
   },
   {
-    id: "how_we_grow",
-    url: require(`@/${imgPath}/how_we_grow${imgRes}.jpg`)
-  },
-  {
     id: "badger",
     url: require(`@/${imgPath}/badger${imgRes}.png`)
-  },
-  {
-    id: "garden",
-    url: require(`@/${imgPath}/order_now${imgRes}.jpg`)
   }
 ];
